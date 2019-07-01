@@ -1,8 +1,14 @@
-import React from "react";
-import "./config/StatusBarConfig";
+import React from 'react';
+import './config/StatusBarConfig';
+import { Provider } from 'react-redux';
 
-import Routes from "./routes";
+import Routes from './routes';
+import store from './store';
 
-const Root = () => <Routes />;
+const App = () => (
+  <Provider store={store}>
+    <Routes />
+  </Provider>
+);
 
-export default Root;
+export default App;
