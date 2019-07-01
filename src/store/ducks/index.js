@@ -3,7 +3,7 @@
 
 import { combineReducers } from 'redux';
 import { reducer as auth } from './auth';
-// import projects from './projects';
+import { reducer as projects } from './projects';
 // import users from './users';
 // import donations from './donations';
 // import projectsDetails from './projectsDetails';
@@ -11,7 +11,7 @@ import { reducer as auth } from './auth';
 
 export default combineReducers({
   auth,
-  // projects,
+  projects,
   // users,
   // donations,
   // projectsDetails,

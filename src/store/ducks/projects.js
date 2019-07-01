@@ -1,33 +1,22 @@
-// 1. Criamos os Types de Projetos
-export const Types = {
-  GET_REQUEST: 'projects/GET_REQUEST',
-  GET_SUCCESS: 'projects/GET_SUCCESS',
-};
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
-const INITIAL_STATE = {
+const { Types, Creators } = createActions({
+  getProjectsRequest: null,
+  getProjectsSuccess: ['data'],
+});
+
+export const ProjectTypes = Types;
+export default Creators;
+
+export const INITIAL_STATE = Immutable({
   data: [],
   loading: false,
-};
+  active: null,
+});
 
-// 2. Criamos os reducers e a action, cada reducer possui um efeito, ou seja, o que ele vai fazer quando for disparado.
-export default function projects(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case Types.GET_REQUEST:
-      return { ...state, loading: true };
-    case Types.GET_SUCCESS:
-      return { ...state, loading: false, data: action.payload.data };
-    default:
-      return state;
-  }
-}
+export const getSuccess = (state, { data }) => state.merge({ data });
 
-// 3. Criamos os nossos ActionCreators, ou seja, nossa actions getProjectsRequest e Success.
-// 3.1 O getProjectsRequest vai ser disparado por um componente e;
-// 3.2 O getProjectsSuccess vai ser disparado pelo SAGA, e os dados da data vai ser passado dentro do payload (entenda a linha 18 e 29-31) (AQUI MESMO ELE CHAMA I GET_REQUEST E SUCCESS).
-export const Creators = {
-  getProjectsRequest: () => ({ type: Types.GET_REQUEST }),
-  getProjectsSuccess: data => ({
-    type: Types.GET_SUCCESS,
-    payload: { data },
-  }),
-};
+export const reducer = createReducer(INITIAL_STATE, {
+  [Types.GET_PROJECTS_SUCCESS]: getSuccess,
+});

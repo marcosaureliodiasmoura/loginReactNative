@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-// import { AsyncStorage } from 'react-native';
 import createNavigator from './routes';
 import NavigationService from './services/navigation';
 
 class App extends Component {
-  // Testar Logout de Usuário
-  // async componentDidMount() {
-  //   AsyncStorage.clear();
-  // }
-
   static propTypes = {
     auth: PropTypes.shape({
       authChecked: PropTypes.bool,

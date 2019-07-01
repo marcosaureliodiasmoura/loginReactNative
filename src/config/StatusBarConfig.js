@@ -1,4 +1,10 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
 
-StatusBar.setBackgroundColor('#7289DA');
 StatusBar.setBarStyle('light-content');
+StatusBar.setHidden(false);
+StatusBar.setTranslucent(true);
+StatusBar.setBackgroundColor('transparent');
+
+if (Platform.OS === 'android') {
+  StatusBar.setBackgroundColor('#111');
+}

@@ -1,11 +1,13 @@
-import { StyleSheet } from "react-native";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
-import { colors } from "~/styles";
+import { StyleSheet } from 'react-native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+// import { getStatusBarHeight } from 'react-native-status-bar-height';
+
+import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
   backgroundWrapper: {
     flex: 1,
-    backgroundColor: colors.backgroundDarker
+    backgroundColor: colors.backgroundDarker,
   },
 
   container: {
@@ -13,7 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    borderColor: colors.darkTransparent
+    borderColor: colors.darkTransparent,
   },
 
   header: {
@@ -24,16 +26,16 @@ const styles = StyleSheet.create({
     paddingTop: getStatusBarHeight() + 10,
     height: 54 + getStatusBarHeight() + 10,
 
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   teamTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: colors.white
-  }
+    fontWeight: 'bold',
+    color: colors.white,
+  },
 });
 
 export default styles;
