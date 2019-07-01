@@ -5,20 +5,27 @@ import NavigationService from '../../services/navigation';
 
 import AuthActions from '../ducks/auth';
 
+export function* init() {
+  const token = yield call([AsyncStorage, 'getItem'], '@meu-Token');
+
+  if (token) {
+    yield put(AuthActions.signInSuccess(token));
+  }
+
+  yield put(AuthActions.initCheckSuccess());
+}
+
 export function* signIn({ email, password }) {
   try {
     const response = yield call(api.post, 'sessions', { email, password });
 
     yield call([AsyncStorage, 'setItem'], '@meu-Token', response.data.token);
 
-    console.log(response.data.token);
+    // console.log(response.data.token);
 
     yield put(AuthActions.signInSuccess(response.data.token));
     NavigationService.navigate('Main');
-    // yield put(push('/'));
-  } catch (err) {
-    console.log('ERRO');
-  }
+  } catch (err) {}
 }
 
 export function* signUp({ name, email, password }) {
