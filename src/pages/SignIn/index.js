@@ -33,6 +33,7 @@ class SignIn extends Component {
     const { email, password } = this.state;
 
     // Trabalharemos com o Saga aqui
+    // seState é pra fazer alteração
     const { signInRequest } = this.props;
 
     signInRequest(email, password);

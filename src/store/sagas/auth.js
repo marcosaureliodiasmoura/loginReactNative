@@ -1,6 +1,7 @@
 import { call, put, select } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 import api from '../../services/api';
+import NavigationService from '../../services/navigation';
 
 import AuthActions from '../ducks/auth';
 
@@ -13,6 +14,7 @@ export function* signIn({ email, password }) {
     console.log(response.data.token);
 
     yield put(AuthActions.signInSuccess(response.data.token));
+    NavigationService.navigate('Main');
     // yield put(push('/'));
   } catch (err) {
     console.log('ERRO');
